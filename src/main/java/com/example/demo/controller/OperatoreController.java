@@ -32,20 +32,10 @@ public class OperatoreController {
     @Autowired
     private TicketRepository ticketRepository;
     
-    @Autowired
-    private TicketService ticketService;
-    
-//    public Optional<User> findAvailableUser() {
-//    	
-//        return userRepository.findAvailableUser();
-//    }
 
-    
     @GetMapping("/{operatoreId}/tickets")
     public String listaTicketOperatore(@PathVariable("operatoreId") Integer operatoreId, Model model) {
-//    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String username = authentication.getName();
-//    	model.addAttribute("user", username);
+
         List<Ticket> ticketList = ticketRepository.findAllTicketsByUserId(operatoreId);
         model.addAttribute("tickets", ticketList);     
         return "/operatori/indexUser";
@@ -78,7 +68,7 @@ public class OperatoreController {
         if (bindingResult.hasErrors()) {
             return "/operatori/updateTicketStatus";
         }
-        //ticket = ticketRepository.findById(ticketId).get();
+        
         String stato = ticket.getStato();
         model.addAttribute("stato", stato);
         System.out.println("Questo è il mio stato: " + stato);
