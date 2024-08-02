@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th='http://www.thymeleaf.org' lang=en data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modifica ticket</title>
+
+    <!-- Bootstrap CSS -->
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous'>
+
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Modifica Ticket</h1>
+        <form th:action="@{/tickets/edit/{id}(id=${ticket.id})}" method="post" th:object="${ticket}">
+            <div class="form-group">
+                <label for="titolo">Titolo ticket</label>
+                <input type="text" class="form-control" id="titolo" th:field="*{titolo}" th:errorClass= "is-invalid" aria-describedby="titolo">
+            </div>
+            <div class="form-group">
+                <label for="descrizione">Descrizione ticket</label>
+                <textarea class="form-control" id="descrizione" th:field="*{descrizione}" rows="3"></textarea>
+            </div>
+			<div class="form-group">
+               <label for="stato">Stato ticket</label>
+               <input type="text" class="form-control" id="titolo" th:field="*{stato}" th:errorClass= "is-invalid" aria-describedby="stato">
+			</div>
+			<div class="form-group">
+               <label for="dataCreazione">Data di creazione del ticket</label>
+               <input type="text" class="form-control" id="dataCreazione" th:field="*{dataCreazione}" th:errorClass= "is-invalid" aria-describedby="dataCreazione">
+			</div>
+			<div class="form-group">
+			    <label for="user">Operatore del ticket</label>
+			    <input type="text" class="form-control" id="user" th:field="*{user}" th:errorClass= "is-invalid" aria-describedby="user">
+			</div>
+			<div class="form-group">
+			     <label for="categoria">Categoria del ticket</label>
+			     <input type="text" class="form-control" id="categoria" th:field="*{categoria}" th:errorClass= "is-invalid" aria-describedby="categoria">
+			</div>
+            <button type="submit" class="btn btn-primary">Salva</button>
+            <a class="btn btn-primary" th:href="@{/tickets}">Torna alla lista</a>
+        </form>
+    </div>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'
+            integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz'
+            crossorigin='anonymous'>
+    </script>
+</body>
+
+</html>

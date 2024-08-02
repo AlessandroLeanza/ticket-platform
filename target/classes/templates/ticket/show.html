@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th='http://www.thymeleaf.org' lang=en data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dettagli ticket</title>
+
+    <!-- Bootstrap CSS -->
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous'>
+
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Dettagli ticket</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${showTicket.id}"></td>
+                    <td th:text="${showTicket.titolo}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Add other ticket details if needed -->
+        <form th:action="@{/tickets/delete/{id}(id=${showTicket.id})}" method="post">
+        <a class="btn btn-primary" th:href="@{/tickets/edit/{id}(id=${showTicket.id})}">Modifica</a>
+            <button type="submit" class="btn btn-danger">Elimina</button>
+        </form>
+    </div>
+	<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'
+			integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz'
+			crossorigin='anonymous'>
+	</script>
+</body>
+</html>
